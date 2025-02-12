@@ -131,5 +131,6 @@ public class AppHomeWork01 {
 //            res=initValue + delta;
 //        }
 //        System.out.println("Передано значение - " + increment + ", поэтому результат = "+ res);
+
     }
 }
