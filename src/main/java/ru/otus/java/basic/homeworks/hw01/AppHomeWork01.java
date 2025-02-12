@@ -31,8 +31,11 @@ public class AppHomeWork01 {
             // Делаю случайное число в диапазоне [-10 : 10]
             int randomIncrement = (int) ((Math.random() * 20) + 1) - 10;
             boolean increment;
-            // В зависимости от знака числа присваиваю значение переменной increment.
-            // Таким образом получаю случайное значение булевой переменной.
+//      В зависимости от знака числа присваиваю значение переменной increment.
+//      Таким образом получаю случайное значение булевой переменной.
+//      Использовал switch, так как были в начале проблемы в случае запроса метода addOrSubtractAndPrint
+//      Студия ругалась на if внутри общего if->else if
+//      Вроде решил, но строка ниже # 39 if (randomIncrement > 0) { всё равно выделяется жёлтым и выдаёт warning при commit.
             if (randomIncrement > 0) {
                 increment = true;
             } else {
@@ -43,9 +46,6 @@ public class AppHomeWork01 {
             System.out.println("Неверный запрос");
         }
 //        Вариант 2 (с дополнением от задания)
-//        Использовал switch, так как были в начале проблемы в случае запроса метода addOrSubtractAndPrint
-//        Студия ругалась на if внутри общего if->else if
-//        Вроде решил, но строка  # 36 if (randomIncrement > 0) { всё равно жёлтым выделяется.
 //        switch (NumberOfMethodeRequested) {
 //            case (1):
 //                greetings();
