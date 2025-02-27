@@ -68,7 +68,7 @@ public class appHomeWork03 {
     }
 
     private static int findMax(int[][] array) {
-        int maxElm = array[1][1];
+        int maxElm = array[0][0];
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 if (maxElm < array[i][j]) {
@@ -85,14 +85,14 @@ public class appHomeWork03 {
     }
 
     private static int findSumOfElementsSecondRowOfArray(int[][] array) {
+        if (array.length < 2) {
+            return -1;
+        }
         int sum = 0;
-        if (array.length >= 2) {
-            for (int i = 0; i < array[1].length; i++) {
-                sum += array[1][i];
-            }
-        } else {
-            sum = -1;
+        for (int i = 0; i < array[1].length; i++) {
+            sum += array[1][i];
         }
         return sum;
+    }
     }
 }
