@@ -22,16 +22,16 @@ public class AppHomework02 {
     }
 
     private static void reverseArray() {
-        //Генерация входного массива заданной длинны со случайными целыми числами от 0 до 10
+
         int[] inputArray = new int[10];
         for (int i = 0; i < inputArray.length; i++) {
-            inputArray[i] = ((int) (Math.random() * 11) );
+            inputArray[i] = ((int) (Math.random() * 11));
         }
 
         int[] outputArray = new int[inputArray.length];
-        int indexOutArray=0;
-        for (int i = inputArray.length-1; i >= 0; i--) {
-            outputArray[indexOutArray]=inputArray[i];
+        int indexOutArray = 0;
+        for (int i = inputArray.length - 1; i >= 0; i--) {
+            outputArray[indexOutArray] = inputArray[i];
             indexOutArray++;
         }
         System.out.println(Arrays.toString(inputArray) + " => " + Arrays.toString(outputArray));
@@ -45,7 +45,7 @@ public class AppHomework02 {
         boolean checkLabel = true;
         currentValue = inputArray[0];
         while (true) {
-            System.out.println("На что будем проверять массив: "+Arrays.toString(inputArray)+"?");
+            System.out.println("На что будем проверять массив: " + Arrays.toString(inputArray) + "?");
             System.out.println("Введите (1) для проверки по возрастанию или (2) для проверки по убыванию:");
             int typeOfChecking = scanner.nextInt();
             if (typeOfChecking == 1) {
@@ -85,14 +85,10 @@ public class AppHomework02 {
     }
 
     private static void taskWithStar2() {
-        //Генерация входного массива заданной длинны со случайными целыми числами от -2 до 2
         int[] inputArray = new int[10];
         for (int i = 0; i < inputArray.length; i++) {
             inputArray[i] = ((int) (Math.random() * 5) - 2);
         }
-        //Ручной ввод массива:
-//        int[] inputArray = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
-
         int sumOfPrevElements = 0;
         int sumOfAllElements = 0;
         boolean labelOfEquals = true;
@@ -117,17 +113,13 @@ public class AppHomework02 {
     }
 
     private static void taskWithStar1() {
-        //Генерация размера входных массивов случайными целыми числами от 1 до 10
-        int sizeArray1 = ((int) (Math.random() * 10)+1);
-        int sizeArray2 = ((int) (Math.random() * 10)+1);
-        int sizeArray3 = ((int) (Math.random() * 10)+1);
-        int sizeArray4 = ((int) (Math.random() * 10)+1);
-
-        int maxSizeArray = Math.max(sizeArray1,sizeArray2);
-        maxSizeArray=Math.max(maxSizeArray,sizeArray3);
-        maxSizeArray=Math.max(maxSizeArray,sizeArray4);
-
-        //Генерация входных массивов заданной длинны со случайными целыми числами от 0 до 10
+        int sizeArray1 = ((int) (Math.random() * 10) + 1);
+        int sizeArray2 = ((int) (Math.random() * 10) + 1);
+        int sizeArray3 = ((int) (Math.random() * 10) + 1);
+        int sizeArray4 = ((int) (Math.random() * 10) + 1);
+        int maxSizeArray = Math.max(sizeArray1, sizeArray2);
+        maxSizeArray = Math.max(maxSizeArray, sizeArray3);
+        maxSizeArray = Math.max(maxSizeArray, sizeArray4);
         int[] inputArray1 = new int[sizeArray1];
         for (int i = 0; i < inputArray1.length; i++) {
             inputArray1[i] = ((int) (Math.random() * 11));
@@ -144,23 +136,10 @@ public class AppHomework02 {
         for (int i = 0; i < inputArray4.length; i++) {
             inputArray4[i] = ((int) (Math.random() * 11));
         }
-        //Ручной ввод массивов:
-//        int[] inputArray1 = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
-//        int[] inputArray2 = {1,1,1,1};
-//        int[] inputArray3 = {1,1,1,1,1,1,1};
-//        int[] inputArray4 = {1,1,1,1,1,1,1,1,1,1,1,1,1};
-
-        //Проверка наполнения массивов
-//        System.out.println(Arrays.toString(inputArray1));
-//        System.out.println(Arrays.toString(inputArray2));
-//        System.out.println(Arrays.toString(inputArray3));
-//        System.out.println(Arrays.toString(inputArray4));
-
-        sumArrayByElments(inputArray1, inputArray2, inputArray3, inputArray4,maxSizeArray);
+        sumArrayByElments(inputArray1, inputArray2, inputArray3, inputArray4, maxSizeArray);
     }
 
     private static void sumArrayByElments(int[] inputArray1, int[] inputArray2, int[] inputArray3, int[] inputArray4, int maxSizeArray) {
-
         int[] outputArray = new int[maxSizeArray];
         for (int i = 0; i < maxSizeArray; i++) {
             if ((inputArray1.length - 1) >= i) {
@@ -176,23 +155,19 @@ public class AppHomework02 {
                 outputArray[i] += inputArray4[i];
             }
         }
-        System.out.println("  "+Arrays.toString(inputArray1)+" +");
-        System.out.println("+ "+Arrays.toString(inputArray2)+" +");
-        System.out.println("+ "+Arrays.toString(inputArray3)+" +");
-        System.out.println("+ "+Arrays.toString(inputArray4)+" =");
-        System.out.println("= "+Arrays.toString(outputArray));
+        System.out.println("  " + Arrays.toString(inputArray1) + " +");
+        System.out.println("+ " + Arrays.toString(inputArray2) + " +");
+        System.out.println("+ " + Arrays.toString(inputArray3) + " +");
+        System.out.println("+ " + Arrays.toString(inputArray4) + " =");
+        System.out.println("= " + Arrays.toString(outputArray));
     }
 
     private static void task5() {
-        //Генерация размера входного массива случайным целым числом от 2 до 10
-        int sizeArray = ((int) (Math.random() * 10)+2);
-        //Генерация входного массива заданной длинны со случайными целыми числами от 0 до 10
+        int sizeArray = ((int) (Math.random() * 10) + 2);
         int[] inputArray = new int[sizeArray];
         for (int i = 0; i < inputArray.length; i++) {
             inputArray[i] = ((int) (Math.random() * 11));
         }
-          //Ручной ввод:
-//        int[] inputArray = {100, 4, 20, 8, 9, 23, 1, 45, 4};
         witchHalfOfMassiveBigger(inputArray);
     }
 
@@ -207,78 +182,54 @@ public class AppHomework02 {
             }
         }
         if (sumFirstPartMassive > sumSecondPartMassive) {
-            System.out.println("Сумма первой половины массива "+Arrays.toString(inputArray)+" больше второй половины.");
+            System.out.println("Сумма первой половины массива " + Arrays.toString(inputArray) + " больше второй половины.");
         } else {
-            System.out.println("Сумма второй половины массива "+Arrays.toString(inputArray)+" больше первой половины.");
+            System.out.println("Сумма второй половины массива " + Arrays.toString(inputArray) + " больше первой половины.");
         }
-        //Вывод полученных сумм для проверки:
-//        System.out.println("Сумма первой половины = " + sumFirstPartMassive + ";");
-//        System.out.println("Сумма второй половины = " + sumSecondPartMassive + ";");
     }
 
-
     private static void task4() {
-        //Генерация размера входного массива случайным целым числом от 1 до 10
-        int sizeArray = ((int) (Math.random() * 10)+1);
-        //Генерация входного массива заданной длинны со случайными целыми числами от 0 до 10
+        int sizeArray = ((int) (Math.random() * 10) + 1);
         int[] inputArray = new int[sizeArray];
         for (int i = 0; i < inputArray.length; i++) {
             inputArray[i] = ((int) (Math.random() * 11));
         }
-        //Ручной ввод:
-//        int[] inputArray = {1, 4, 8, 9, 23, 1, 45, 4, 7};
-        //Генерация случайного целого числа от 0 до 10
         int numberToIncreaseArray = ((int) (Math.random() * 11));
-        System.out.print("Массив: "+Arrays.toString(inputArray)+" после увеличения на "+numberToIncreaseArray+" = ");
+        System.out.print("Массив: " + Arrays.toString(inputArray) + " после увеличения на " + numberToIncreaseArray + " = ");
         increaseEveryElmMassiveToNumber(inputArray, numberToIncreaseArray);
-        //Проверка, что "исходный" то же поменялся, то есть ссылается на те же блоки памяти в Heap
-//        System.out.println(Arrays.toString(inputArray));
     }
 
     private static void increaseEveryElmMassiveToNumber(int[] array, int NumberToIncrease) {
         for (int i = 0; i < array.length; i++) {
             array[i] += NumberToIncrease;
         }
-        //Проверка, что поменялись блоки памяти в Heap
         System.out.println(Arrays.toString(array));
     }
 
     private static void task3() {
-        //Генерация размера входного массива случайным целым числом от 1 до 10
-        int sizeArray = ((int) (Math.random() * 10)+1);
-        //Генерация входного массива заданной длинны со случайными целыми числами от 0 до 10
+        int sizeArray = ((int) (Math.random() * 10) + 1);
         int[] inputArray = new int[sizeArray];
         for (int i = 0; i < inputArray.length; i++) {
             inputArray[i] = ((int) (Math.random() * 11));
         }
-        //Ручной ввод:
-//        int[] inputArray = {1, 4, 8, 9, 23, 1, 45, 4, 7};
-        //Генерация случайного целого числа от 0 до 10
         int numberToFillArray = ((int) (Math.random() * 11));
-        System.out.print(Arrays.toString(inputArray)+" => ");
+        System.out.print(Arrays.toString(inputArray) + " => ");
         replaceAllElmMassiveWithNumber(inputArray, numberToFillArray);
-        //Проверка, что "исходный" то же поменялся, то есть ссылается на те же блоки памяти в Heap
-//        System.out.println(Arrays.toString(inputArray));
     }
 
     private static void replaceAllElmMassiveWithNumber(int[] array, int numberToFillArray) {
         for (int i = 0; i < array.length; i++) {
             array[i] = numberToFillArray;
         }
-        //Проверка, что поменялись блоки памяти в Heap
         System.out.println(Arrays.toString(array));
     }
 
     private static void task2() {
-        //Генерация размера входного массива случайным целым числом от 1 до 10
-        int sizeArray = ((int) (Math.random() * 10)+1);
-        //Генерация входного массива заданной длинны со случайными целыми числами от 0 до 10
+        int sizeArray = ((int) (Math.random() * 10) + 1);
         int[] inputArray = new int[sizeArray];
         for (int i = 0; i < inputArray.length; i++) {
             inputArray[i] = ((int) (Math.random() * 11));
         }
-        //Ручной ввод:
-//        int[] inputArray = {1, 4, 8, 9, 23, 1, 45, 4, 7};
         sumOfElmMassiveMore5(inputArray);
     }
 
@@ -289,7 +240,7 @@ public class AppHomework02 {
                 sumOfElements += inputArray[i];
             }
         }
-        System.out.println("Сумма элементов массива "+Arrays.toString(inputArray)+", значение которых >5 = " + sumOfElements);
+        System.out.println("Сумма элементов массива " + Arrays.toString(inputArray) + ", значение которых >5 = " + sumOfElements);
     }
 
     private static void task1() {
@@ -299,13 +250,13 @@ public class AppHomework02 {
         System.out.println("Введите количество повторений:");
         int countOfRepeat = scanner.nextInt();
 
-//        Вариант с предопределённым словом и числом:
-//        String wordToRepeat = "World";
-//        int countOfRepeat = 5;
         printWordSeveralTimes(countOfRepeat, wordToRepeat);
     }
 
     private static void printWordSeveralTimes(int countOfRepeat, String wordToRepeat) {
+        if (wordToRepeat == null || countOfRepeat <= 0) {
+            return;
+        }
         for (int i = 0; i < countOfRepeat; i++) {
             System.out.println(wordToRepeat);
         }
