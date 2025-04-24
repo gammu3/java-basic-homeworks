@@ -1,4 +1,4 @@
-package hw10;
+package ru.otus.java.basic.homeworks.hw10;
 
 public class AppMain {
     public static void main(String[] args) {
