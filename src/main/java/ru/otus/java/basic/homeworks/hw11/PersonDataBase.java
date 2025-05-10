@@ -10,7 +10,6 @@ public class PersonDataBase {
     private Map<Long, Person> personsDb = new HashMap<>();
     private Set<Long> managersDb = new HashSet<>();
 
-
     public void add(Person person) {
         if (person == null || person.getId() == null) {
             throw new IllegalArgumentException("Person and ID must not be null");

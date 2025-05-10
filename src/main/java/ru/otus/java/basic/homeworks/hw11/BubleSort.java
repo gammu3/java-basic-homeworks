@@ -6,19 +6,21 @@ public class BubleSort {
         for (int i = 0; i < array.length; i++) {
             array[i] = (int) (Math.random() * 10000);
         }
-printArray(array);
+        printArray(array);
 
-bubleSort(array);
+        bubleSort(array);
 
-printArray(array);
+        printArray(array);
 
     }
+
     private static void printArray(int[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
         }
         System.out.println();
     }
+
     private static void bubleSort(int[] array) {
         boolean needSort;
         do {
@@ -33,9 +35,4 @@ printArray(array);
             }
         } while (needSort);
     }
-
-
-
-
-
 }

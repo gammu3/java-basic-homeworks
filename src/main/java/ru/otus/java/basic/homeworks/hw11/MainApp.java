@@ -18,7 +18,5 @@ public class MainApp {
         db.add(janitor);
         db.add(branchDirector);
         db.add(qa);
-
-
     }
 }
