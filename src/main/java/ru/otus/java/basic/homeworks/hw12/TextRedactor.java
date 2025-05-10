@@ -27,12 +27,9 @@ public class TextRedactor {
             for (File file : textFiles) {
                 System.out.println(file.getName());
             }
-
-//            File selectedFile = selectFile(scanner, textFiles);
             String fileName = selectFile(scanner, textFiles);
 
             if (fileName == null) {
-                // Пользователь ввел /exit
                 System.out.println("Работа программы завершена.");
                 return;
             }
@@ -100,7 +97,13 @@ public class TextRedactor {
         }
         System.out.println("Работа с файлом завершена.");
     }
+    /**
+     * Данная функция позволяет пользователю выбрать файл из списка текстовых файлов в каталоге.
+     * textFiles входных текстовых файлов
+     * Выдаёт имя выбранного файла или null при выборе exit
+     * Метод запрашивает ввод, пока не будут введены корректные данные имя файла или команда /exit.
 
+     */
     private static String selectFile(Scanner scanner, File[] textFiles) {
         while (true) {
             System.out.print("\nВведите имя файла (с .txt или без), с которым хотите работать (/exit - выход): ");
