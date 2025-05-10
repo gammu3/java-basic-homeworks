@@ -22,7 +22,7 @@ public class PhoneBook {
         Set<Map.Entry<String, Set<String>>> entries = nameToPhoneNumbersMap.entrySet();
         for (Map.Entry<String, Set<String>> currentName : entries) {
             if (currentName.getKey().contains(name)) {
-                phoneNumbersForFindName.add(String.valueOf(currentName.getValue()).replace("[", "").replace("]", ""));
+                phoneNumbersForFindName.addAll(currentName.getValue());
             }
 
         }
