@@ -6,6 +6,12 @@ import java.util.Map;
 import java.util.Set;
 
 public class PersonDataBase {
+    private static final Set<Position> MANAGER_POSITIONS = new HashSet<>() {{
+        add(Position.MANAGER);
+        add(Position.DIRECTOR);
+        add(Position.BRANCH_DIRECTOR);
+        add(Position.SENIOR_MANAGER);
+    }};
 
     private Map<Long, Person> personsDb = new HashMap<>();
     private Set<Long> managersDb = new HashSet<>();
@@ -26,9 +32,10 @@ public class PersonDataBase {
     }
 
     public boolean isManager(Person person) {
-        if (person == null) return false;
-        Position position = person.getPosition();
-        return position == Position.MANAGER || position == Position.DIRECTOR || position == Position.BRANCH_DIRECTOR || position == Position.SENIOR_MANAGER;
+        if (person == null) {
+            return false;
+        }
+        return MANAGER_POSITIONS.contains(person.getPosition());
     }
 
     public boolean isEmployee(Long id) {
