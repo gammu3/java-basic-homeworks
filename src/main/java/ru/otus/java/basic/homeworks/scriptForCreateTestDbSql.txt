@@ -1,0 +1,106 @@
+CREATE TABLE tests (
+    test_id SERIAL PRIMARY KEY,
+    test_name VARCHAR(255) NOT NULL,
+    description TEXT
+);
+CREATE TABLE questions (
+    question_id SERIAL PRIMARY KEY,
+    test_id INTEGER NOT NULL,
+    question_text TEXT NOT NULL,
+    FOREIGN KEY (test_id) REFERENCES tests(test_id) ON DELETE cascade
+);
+
+CREATE TABLE answers (
+    answer_id SERIAL PRIMARY KEY,
+    question_id INTEGER NOT NULL,
+    answer_text TEXT NOT NULL,
+    is_correct BOOLEAN NOT NULL DEFAULT FALSE,
+    FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE cascade
+);
+
+INSERT INTO tests (test_name, description) 
+VALUES ('Победители гран-при F1 2025', 'Тест по знанию победителей гран-при F1 2025');
+
+INSERT INTO questions (test_id, question_text) 
+VALUES 
+(1, 'Кто победил в гран-при Австралии в 2025 году?'),
+(1, 'Кто победил в гран-при на Китая в 2025 году?'),
+(1, 'Кто победил в гран-при Японии в 2025 году?');
+
+INSERT INTO answers (question_id, answer_text, is_correct) 
+VALUES 
+(1, 'Max Verstappen', FALSE),
+(1, 'Lando Norris', TRUE),
+(1, 'Oscar Piastri', FALSE),
+(1, 'Lewis Hamilton', FALSE),
+(1, 'Charles Leclerc', FALSE),
+(1, 'George Russell', FALSE),
+(1, 'Kimi Antonelli', FALSE),
+(2, 'Max Verstappen', FALSE),
+(2, 'Lando Norris', FALSE),
+(2, 'Oscar Piastri', TRUE),
+(2, 'Lewis Hamilton', FALSE),
+(2, 'Charles Leclerc', FALSE),
+(2, 'George Russell', FALSE),
+(2, 'Kimi Antonelli', FALSE),
+(3, 'Max Verstappen', TRUE),
+(3, 'Lando Norris', FALSE),
+(3, 'Oscar Piastri', FALSE),
+(3, 'Lewis Hamilton', FALSE),
+(3, 'Charles Leclerc', FALSE),
+(3, 'George Russell', FALSE),
+(3, 'Kimi Antonelli', FALSE);
+
+INSERT INTO tests (test_name, description) 
+VALUES ('Командв победители F1 2025', 'Тест по знанию победивших команд в кубке конструкторов F1 2025');
+
+INSERT INTO questions (test_id, question_text) 
+VALUES 
+(2, 'Какая команда победила в гран-при Австралии в 2025 году?'),
+(2, 'Какая команда победила в гран-при Китая в 2025 году?'),
+(2, 'Какая команда победила в гран-при Японии в 2025 году?');
+
+
+INSERT INTO answers (question_id, answer_text, is_correct) 
+VALUES 
+(4, 'Mercedes', FALSE),
+(4, 'Red Bull Racing', FALSE),
+(4, 'Ferrari', FALSE),
+(4, 'McLaren', TRUE),
+(4, 'Aston Martin', FALSE),
+(4, 'Alpine', FALSE),
+(4, 'Williams', FALSE),
+(4, 'Racing Bulls', FALSE),
+(4, 'Sauber', FALSE),
+(4, 'Haas', FALSE),
+
+(5, 'Mercedes', FALSE),
+(5, 'Red Bull Racing', FALSE),
+(5, 'Ferrari', FALSE),
+(5, 'McLaren', TRUE),
+(5, 'Aston Martin', FALSE),
+(5, 'Alpine', FALSE),
+(5, 'Williams', FALSE),
+(5, 'Racing Bulls', FALSE),
+(5, 'Sauber', FALSE),
+(5, 'Haas', FALSE),
+
+(6, 'Mercedes', FALSE),
+(6, 'Red Bull Racing', TRUE),
+(6, 'Ferrari', FALSE),
+(6, 'McLaren', FALSE),
+(6, 'Aston Martin', FALSE),
+(6, 'Alpine', FALSE),
+(6, 'Williams', FALSE),
+(6, 'Racing Bulls', FALSE),
+(6, 'Sauber', FALSE),
+(6, 'Haas', FALSE);
+
+SELECT
+    t.test_name,
+    q.question_text,
+    a.answer_text,
+    a.is_correct
+FROM tests t
+JOIN questions q ON t.test_id = q.test_id
+JOIN answers a ON q.question_id = a.question_id;
