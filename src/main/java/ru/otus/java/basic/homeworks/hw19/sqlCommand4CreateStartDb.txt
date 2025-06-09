@@ -1,0 +1,42 @@
+CREATE TABLE roles (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    password VARCHAR(255) NOT NULL,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE userToRole (
+    user_id INT NOT NULL,
+    role_id INT NOT NULL,
+    PRIMARY KEY (user_id, role_id),
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+    FOREIGN KEY (role_id) REFERENCES roles (id) ON DELETE CASCADE
+)
+
+
+
+INSERT INTO roles (name) VALUES
+    ('ADMIN'),
+    ('USER')
+ON CONFLICT (name) DO NOTHING;
+
+
+INSERT INTO users (username, password, email)
+VALUES ('admin', 'admin', 'admin@mail.ru')
+ON CONFLICT (username) DO NOTHING;
+
+
+INSERT INTO userToRole (user_id, role_id)
+SELECT
+    (SELECT id FROM users WHERE email = 'admin@mail.ru'),
+    (SELECT id FROM roles WHERE name = 'ADMIN')
+WHERE
+    (SELECT id FROM users WHERE email = 'admin@mail.ru') IS NOT NULL
+    AND
+    (SELECT id FROM roles WHERE name = 'ADMIN') IS NOT null
+ON CONFLICT DO NOTHING;
