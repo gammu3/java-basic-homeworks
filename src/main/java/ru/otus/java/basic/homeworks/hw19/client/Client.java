@@ -56,7 +56,6 @@ public class Client {
                     break;
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,17 +66,9 @@ public class Client {
             if (in != null) {
                 in.close();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
             if (out != null) {
                 out.close();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
             if (socket != null) {
                 socket.close();
             }

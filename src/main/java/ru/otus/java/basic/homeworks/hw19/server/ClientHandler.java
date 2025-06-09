@@ -14,7 +14,6 @@ public class ClientHandler {
     private boolean authenticated;
     private String username;
 
-
     public ClientHandler(Socket socket, Server server) throws IOException {
         this.socket = socket;
         this.server = server;
@@ -23,7 +22,6 @@ public class ClientHandler {
 
         new Thread(() -> {
             try {
-//                System.out.println("Клиент подключился " + socket.getPort());
                 while (true) {
                     sendMsg("Перед работой с чатом необходимо выполнить " +
                             "аутентификацию '/log email password' \n" +
@@ -35,7 +33,7 @@ public class ClientHandler {
                             break;
                         }
                         if (message.startsWith("/log ")) {
-                            String token[] = message.split(" ");
+                            String[] token = message.split(" ");
                             if (token.length != 3) {
                                 sendMsg("Неверный формат команды /log");
                                 continue;
@@ -47,7 +45,7 @@ public class ClientHandler {
                             }
                         }
                         if (message.startsWith("/reg ")) {
-                            String token[] = message.split(" ");
+                            String[] token = message.split(" ");
                             if (token.length != 4) {
                                 sendMsg("Неверный формат команды /reg");
                                 continue;
@@ -110,6 +108,7 @@ public class ClientHandler {
     public void setUsername(String username) {
         this.username = username;
     }
+
     public String getRole() {
         return role;
     }
@@ -118,40 +117,24 @@ public class ClientHandler {
         this.role = role;
     }
 
-
     public void disconnect() {
         if (!authenticated) return;
-
         server.unsubscribe(this, false);
         forceClose();
     }
-    private volatile boolean isBeingDisconnected = false;
+
     public void forceClose() {
         this.authenticated = false;
-
-        // Закрываем потоки в правильном порядке
         try {
             if (out != null) {
                 try {
                     out.writeUTF("/disconnected");
                     out.flush();
-                } catch (IOException ignored) {
-                    // Игнорируем ошибки принудительного закрытия
-                }
+                } catch (IOException ignored) {}
             }
-        } finally {
-            try {
-                if (in != null) in.close();
-            } catch (IOException ignored) {}
-
-            try {
-                if (out != null) out.close();
-            } catch (IOException ignored) {}
-
-            try {
-                if (socket != null) socket.close();
-            } catch (IOException ignored) {}
-        }
+            if (in != null) in.close();
+            if (out != null) out.close();
+            if (socket != null) socket.close();
+        } catch (IOException ignored) {}
     }
-
 }

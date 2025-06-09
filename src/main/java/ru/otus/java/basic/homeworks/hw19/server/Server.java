@@ -70,16 +70,12 @@ public class Server {
         for (ClientHandler client : clients) {
             if (client.getUsername().equals(usernameToKick)) {
                 try {
-                    // Отправляем сообщение о кике
                     client.sendMsg("Вы были отключены администратором");
-                    // Даем время на отправку сообщения
                     Thread.sleep(100);
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
-                    // Удаляем из списка и закрываем соединение
                     clients.remove(client);
-//                    client.forceClose();
                     client.disconnect();
                 }
                 adminHandler.sendMsg("Пользователь " + usernameToKick + " отключен");
@@ -88,25 +84,7 @@ public class Server {
         }
         adminHandler.sendMsg("Пользователь " + usernameToKick + " не найден");
     }
-    private void forceDisconnect(ClientHandler client) {
-        try {
-            // Удаляем из списка клиентов перед закрытием
-            clients.remove(client);
-            // Закрываем соединение
-            client.forceClose();
-        } catch (Exception e) {
-            System.err.println("Ошибка при принудительном отключении: " + e.getMessage());
-        }
-    }
-//    private void silentDisconnect(ClientHandler client) {
-//        try {
-//            client.sendMsg("/exitok");
-//            clients.remove(client);
-//            client.disconnect();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+
     public void sendPrivateMessage(ClientHandler sender, String recipientName, String message) {
         boolean recipientFound = false;
 
