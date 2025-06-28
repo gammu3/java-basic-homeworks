@@ -1,7 +1,7 @@
-package ru.otus.java.basic.homeworks.hw19.service;
+package ru.otus.java.basic.homeworks.dbmaterials.service;
 
-import ru.otus.java.basic.homeworks.hw19.entity.Role;
-import ru.otus.java.basic.homeworks.hw19.entity.User;
+import ru.otus.java.basic.homeworks.dbmaterials.entity.Role;
+import ru.otus.java.basic.homeworks.dbmaterials.entity.User;
 
 import java.sql.*;
 import java.util.ArrayList;

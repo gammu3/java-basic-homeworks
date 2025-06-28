@@ -1,4 +1,4 @@
-package ru.otus.java.basic.homeworks.hw19.client;
+package ru.otus.java.basic.homeworks.dbmaterials.client;
 
 
 import java.io.IOException;

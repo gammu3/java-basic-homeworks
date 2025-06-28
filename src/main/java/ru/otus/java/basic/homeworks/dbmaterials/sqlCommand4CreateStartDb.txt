@@ -40,3 +40,12 @@ WHERE
     AND
     (SELECT id FROM roles WHERE name = 'ADMIN') IS NOT null
 ON CONFLICT DO NOTHING;
+
+
+CREATE TABLE materials (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    density DOUBLE PRECISION NOT NULL,
+    young_modulus DOUBLE PRECISION NOT NULL,
+    poisson_ratio DOUBLE PRECISION NOT NULL
+);

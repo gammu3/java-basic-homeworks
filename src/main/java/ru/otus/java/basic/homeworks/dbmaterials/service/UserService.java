@@ -1,6 +1,6 @@
-package ru.otus.java.basic.homeworks.hw19.service;
+package ru.otus.java.basic.homeworks.dbmaterials.service;
 
-import ru.otus.java.basic.homeworks.hw19.entity.User;
+import ru.otus.java.basic.homeworks.dbmaterials.entity.User;
 
 import java.sql.Connection;
 import java.sql.SQLException;

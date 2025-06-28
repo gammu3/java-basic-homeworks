@@ -1,4 +1,4 @@
-package ru.otus.java.basic.homeworks.hw19.server;
+package ru.otus.java.basic.homeworks.dbmaterials.server;
 
 public class ServerApplication {
     public static void main(String[] args) {

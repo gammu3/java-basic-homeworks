@@ -1,4 +1,4 @@
-package ru.otus.java.basic.homeworks.hw19.entity;
+package ru.otus.java.basic.homeworks.dbmaterials.entity;
 
 import java.util.ArrayList;
 import java.util.List;
