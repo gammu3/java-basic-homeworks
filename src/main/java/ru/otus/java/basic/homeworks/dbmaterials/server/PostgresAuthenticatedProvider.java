@@ -60,7 +60,6 @@ public class PostgresAuthenticatedProvider implements AuthenticatedProvider {
 
     @Override
     public boolean registration(ClientHandler clientHandler, String email, String password, String username) {
-        // Проверки и регистрация пользователя
         if (userService.registerUser(username, password, email)) {
             clientHandler.setUsername(username);
             clientHandler.setRole(USER);

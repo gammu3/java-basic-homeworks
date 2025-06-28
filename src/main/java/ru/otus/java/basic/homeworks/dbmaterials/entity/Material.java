@@ -20,7 +20,6 @@ public class Material {
         this.poissonRatio = poissonRatio;
     }
 
-    // Геттеры и сеттеры
     public int getId() {
         return id;
     }

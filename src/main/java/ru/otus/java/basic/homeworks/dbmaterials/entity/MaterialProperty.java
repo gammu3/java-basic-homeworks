@@ -57,6 +57,4 @@ public class MaterialProperty {
                 ", value='" + value + '\'' +
                 '}';
     }
-
-    // Конструкторы, геттеры, сеттеры, equals, hashCode, toString
 }

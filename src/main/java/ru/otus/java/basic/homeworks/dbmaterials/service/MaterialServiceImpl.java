@@ -72,7 +72,7 @@ public class MaterialServiceImpl implements MaterialService {
             if (affectedRows > 0) {
                 try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
-                        material.setId(generatedKeys.getInt(1)); // Устанавливаем реальный ID
+                        material.setId(generatedKeys.getInt(1));
                         return true;
                     }
                 }
