@@ -1,5 +1,7 @@
 package ru.otus.java.basic.homeworks.dbmaterials.server;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.otus.java.basic.homeworks.dbmaterials.entity.Material;
 import ru.otus.java.basic.homeworks.dbmaterials.service.MaterialService;
 import ru.otus.java.basic.homeworks.dbmaterials.service.MaterialServiceImpl;
@@ -11,14 +13,17 @@ import java.util.List;
 
 
 public class ClientHandler {
+    private static final Logger logger = LoggerFactory.getLogger(ClientHandler.class);
+
     private Socket socket;
     private Server server;
     private DataInputStream in;
     private DataOutputStream out;
-    private String role;
+    private UserRole role;
     private boolean authenticated;
     private String username;
     private MaterialService materialService;
+
 
     public ClientHandler(Socket socket, Server server) throws IOException {
         this.socket = socket;
@@ -117,7 +122,7 @@ public class ClientHandler {
             int id = Integer.parseInt(message.split(" ")[1]);
             Material material = materialService.getMaterialById(id);
             if (material != null) {
-                // Выводим информацию о материале
+
                 sendMsg("Материал #" + material.getId() + ": " + material.getName());
                 sendMsg("Плотность: " + material.getDensity());
                 sendMsg("Модуль Юнга: " + material.getYoungModulus());
@@ -142,7 +147,7 @@ public class ClientHandler {
     }
 
     private void handleAddMaterial(String message) {
-        if (!"ADMIN".equals(role)) {
+        if (role != UserRole.ADMIN) {
             sendMsg("Ошибка: недостаточно прав");
             return;
         }
@@ -159,10 +164,8 @@ public class ClientHandler {
             double youngModulus = Double.parseDouble(parts[3]);
             double poissonRatio = Double.parseDouble(parts[4]);
 
-            // Создаем материал с ID = 0 - он будет заменен базой данных
             Material material = new Material(0, name, density, youngModulus, poissonRatio);
             if (materialService.addMaterial(material)) {
-                // После успешного добавления material.getId() будет содержать реальный ID
                 sendMsg("Материал успешно добавлен с ID: " + material.getId());
             } else {
                 sendMsg("Ошибка при добавлении материала");
@@ -175,7 +178,7 @@ public class ClientHandler {
     }
 
     private void handleDeleteMaterial(String message) {
-        if (!"ADMIN".equals(role)) {
+        if (role != UserRole.ADMIN) {
             sendMsg("Ошибка: недостаточно прав");
             return;
         }
@@ -193,7 +196,7 @@ public class ClientHandler {
     }
 
     private void handleUpdateMaterial(String message) {
-        if (!"ADMIN".equals(role)) {
+        if (role != UserRole.ADMIN) {
             sendMsg("Ошибка: недостаточно прав");
             return;
         }
@@ -249,7 +252,7 @@ public class ClientHandler {
         sendMsg("/view id - показать детали материала с указанным ID");
         sendMsg("/exit - выход из системы");
 
-        if ("ADMIN".equals(role)) {
+        if (role == UserRole.ADMIN) {
             sendMsg("=== Команды администратора ===");
             sendMsg("/add name density youngModulus poissonRatio - добавить новый материал");
             sendMsg("/delete id - удалить материал");
@@ -275,5 +278,5 @@ public class ClientHandler {
 
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
-    public void setRole(String role) { this.role = role; }
+    public void setRole(UserRole role) { this.role = role; }
 }
