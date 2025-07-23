@@ -20,8 +20,8 @@ public class ABCPrinter {
         executor.execute(() -> printLetter('A', conditionA, conditionB));
         executor.execute(() -> printLetter('B', conditionB, conditionC));
         executor.execute(() -> printLetter('C', conditionC, conditionA));
-        executor.shutdown();
 
+        executor.shutdown();
     }
 
     private static void printLetter(char letter, Condition currentCondition, Condition nextCondition) {
