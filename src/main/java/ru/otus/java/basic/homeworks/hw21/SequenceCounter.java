@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class SequenceCounter {
@@ -38,7 +39,7 @@ public class SequenceCounter {
         StringBuilder window = new StringBuilder();
 
         try (BufferedReader reader = new BufferedReader(
-                new InputStreamReader(new FileInputStream(fileName), "UTF-8"))) {
+                new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8))) {
 
             int charsRead;
             while ((charsRead = reader.read(buffer)) != -1) {
